@@ -2,15 +2,14 @@ import React, { useEffect } from 'react';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 
 function Nav(props) {
-  useEffect(() => {
-    document.title = capitalizeFirstLetter(currentCategory.name);
-  }, [currentCategory]); //whenever the currentCategory changes, fire the document title anon function
   const {
     categories = [],
     setCurrentCategory,
     currentCategory,
   } = props;
-
+  useEffect(() => {
+    document.title = capitalizeFirstLetter(currentCategory.name);
+  }, [currentCategory]); //whenever the currentCategory changes, fire the document title anon function
   return (
     <header className="flex-row px-1">
       <h2>
@@ -31,7 +30,7 @@ function Nav(props) {
           {categories.map((category) => (
             <li
               className={`mx-1 ${
-                currentCategory.name === category.name && 'navActive'
+                currentCategory.name === category.name && 'navActive' //if the we're on that category, make it navActive class (orange)
                 }`}
               key={category.name}
             >
